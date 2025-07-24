@@ -665,37 +665,43 @@
         });
     });
     }
-        //typewrite 추가
-        document.addEventListener('DOMContentLoaded', function () {
-        const title = document.querySelector('.section-title.typewriter');
 
-        if (!title) return;
+    
+        // 250723 홍미숙 추가 - typewrite
+        // 250724 홍미숙 수정 - typewrite 한글자씩 타이핑 되도록
+        document.addEventListener('DOMContentLoaded', () => {
+        const title = document.querySelector('.typewriter');
+        const text = title?.dataset.text;
+        if (!title || !text) return;
+        let typing = false;
+        const typeText = () => {
+            if (typing) return;
+            typing = true;
+            title.textContent = '';
+            const cursor = document.createElement('span');
+            cursor.className = 'cursor';
+            title.appendChild(cursor);
 
-        title.addEventListener('animationend', () => {
-            if (title.classList.contains('start-typing')) {
-            title.classList.remove('start-typing');
-            }
-        });
-
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                title.classList.remove('start-typing');
-                setTimeout(() => {
-                    title.classList.add('start-typing');
-                }, 50);
+            [...text].forEach((char, i) => {
+            setTimeout(() => {
+                title.insertBefore(document.createTextNode(char), cursor);
+                if (i === text.length - 1) {
+                cursor.remove();
+                typing = false;
                 }
+            }, 100 * i);
             });
+        };
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+            if (entry.isIntersecting && !typing) typeText();
             });
-
-            observer.observe(title);
-        } else {
-            title.classList.add('start-typing');
-        }
+        }, { threshold: 0.6 });
+        observer.observe(title);
         });
 
-        //data-target 추가
+
+        //250723 홍미숙 추가 - data-target 이동
         document.querySelectorAll('.hero-cta button').forEach(button => {
         button.addEventListener('click', () => {
             const targetId = button.getAttribute('data-target');
@@ -709,8 +715,7 @@
         });
 
 
-
-        //카드 뒤집기
+        //250723 홍미숙 추가 - 카드 뒤집기
         document.querySelectorAll('.card-link').forEach(link => {
         link.addEventListener('click', e => {
             e.preventDefault(); // a태그 이동 차단

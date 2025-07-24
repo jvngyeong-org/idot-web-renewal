@@ -312,6 +312,7 @@ p {
 }
 
 /* typewriter 추가 */
+/* 250723 홍미숙 추가 - typewriter */
 @keyframes typing {
   from { width: 0; }
   to { width: 100%; }
@@ -326,10 +327,10 @@ p {
   display: inline-block;
   overflow: hidden;
   /* 모바일 환경 정상 동작을 위해 white-space 스타일 주석처리. 2025-07-24 | 홍지은
-  white-space: nowrap;
-  */
-  border-right: 2px solid #162447;
-  width: auto;
+  white-space: nowrap;*/
+  /* border-right: none; width: auto; 제거 | 250724 홍미숙 */
+  white-space: normal; /* 줄바꿈 허용 추가 - 250724 홍미숙 */
+  overflow-wrap: break-word; /* 단어가 길면 자동 줄바꿈 추가 - 250724 홍미숙 */
 }
 
 .typewriter.start-typing {
@@ -348,6 +349,7 @@ p {
   50% { border-color: #162447; }
 }
 
+/* 250723 홍미숙 수정 */
 .about-text p {
     font-size: 1rem;
     line-height: 1;
@@ -531,7 +533,6 @@ p {
     }
 }
 
-
 /* Buttons */
 .btn-primary,
 .btn-secondary {
@@ -562,15 +563,17 @@ p {
 }
 
 /* 사업내용 Section */
+/* 250723 홍미숙 수정 - 사업내용 Section */
 .business-grid {
     display: flex;
-    gap: 2rem;
+    gap: 1rem; /* 250724 홍미숙 수정 */
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .business-card {
-    height: 380px;
+    flex: 0 0 calc(33.333% - 1rem); /* 250724 홍미숙 수정 - 기본 3분할 */
+    height: 430px;  /* 250724 홍미숙 수정 - 카드 컨텐츠 모두 보이게 */
     width: 300px;
     background-color: #fff;
     border-radius: 16px;
@@ -582,6 +585,13 @@ p {
     position: relative;
 }
 
+/* 250724 홍미숙 추가 - 모바일: 1개씩 세로 정렬 */
+@media (max-width: 576px) {
+    .business-card {
+        flex: 0 0 100%;
+    }
+}
+/* 250723 홍미숙 수정 */
 .business-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 30px rgba(0,0,0,0.15);
@@ -1276,12 +1286,12 @@ p {
         flex-direction: column;
         align-items: center;
     }
-
-    /* Business Grid */
+    /* 250724홍미숙 - 추석처리 */
+    /* Business Grid
     .business-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-    }
+    } */
 
     /* Partnership Tabs */
     .category-tabs {
@@ -1324,7 +1334,7 @@ p {
         gap: 1rem;
     }
 
-    /* Footer */
+    /* Footer 
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
