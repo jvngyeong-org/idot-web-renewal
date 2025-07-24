@@ -1064,7 +1064,7 @@ p {
     text-align: center;
 
     /*.office-locations에 css 스타일 추가. 2025-07-23 | 이준경 */
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1119,7 +1119,7 @@ p {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 4rem;
     /* footer-content의 margin-bottom 주석 처리. 2025-07-23 | 이준경
     margin-bottom: 3rem;
