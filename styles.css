@@ -596,30 +596,30 @@ p {
     transform: translateY(-10px);
     box-shadow: 0 20px 30px rgba(0,0,0,0.15);
 }
-
+/* 250723 홍미숙 수정 */
 .card-img {
     width: 100%;
     height: 180px;
     object-fit: cover;
 }
-
+/* 250723 홍미숙 수정 */
 .card-content {
     padding: 1.2rem;
 }
-
+/* 250723 홍미숙 수정 */
 .card-content h3 {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: #1a1a1a;
 }
-
+/* 250723 홍미숙 수정 */
 .card-content p {
     font-size: 0.95rem;
     line-height: 1.5;
     color: #333;
 }
-
+/* 250723 홍미숙 수정 */
 .card-link {
     display: inline-block;
     margin-top: 1rem;
@@ -628,11 +628,11 @@ p {
     font-size: 0.95rem;
     text-decoration: none;
 }
-
+/* 250723 홍미숙 수정 */
 .card-link:hover {
     text-decoration: underline;
 }
-
+/* 250723 홍미숙 수정 */
 .card-inner {
     position: relative;
     width: 100%;
@@ -640,11 +640,11 @@ p {
     transition: transform 0.6s;
     transform-style: preserve-3d;
 }
-
+/* 250723 홍미숙 수정 */
 .business-card.flipped .card-inner {
     transform: rotateY(180deg);
 }
-
+/* 250723 홍미숙 수정 */
 .card-front,
 .card-back {
     position: absolute;
@@ -656,15 +656,26 @@ p {
     border-radius: 16px;
     background-color: #fff;
 }
-
+/* 250724 홍미숙 수정 */
 .card-back {
     transform: rotateY(180deg);
-    padding: 1.2rem;
+    padding: 1.5rem;
     box-sizing: border-box;
-    color: #1a1a1a;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    color: #333;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
 }
-
+/* 250724 홍미숙 추가 */
+.card-back h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
 /* Partnership Section */
 /* /250724 홍지은 수정/ */
 .partnership-content {
