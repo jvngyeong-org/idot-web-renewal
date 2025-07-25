@@ -865,7 +865,16 @@ p {
   gap: 0.1rem;
   */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));  
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  column-gap: 2rem;
+  width: 100%;
+  margin:0 auto;
+}
+
+@media (min-width: 1100px) {
+  #portfolio-list {
+    grid-template-columns: repeat(4, 1fr); /* 최대 4개 */
+  }
 }
 
 /* /250724 홍지은 추가/: 각 아이템(한 회사) */
@@ -1427,7 +1436,6 @@ p {
     }
 
     /* Cards and Components */
-    .business-card,
     .contact-card,
     .location-card {
         padding: 2rem 1.5rem;
