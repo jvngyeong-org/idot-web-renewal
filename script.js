@@ -751,4 +751,64 @@
             document.body.classList.add('loaded');
         }, 500);
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const logos = document.querySelector('.partner-logos');
+    if (!logos) return;
+
+    logos.addEventListener('wheel', e => {
+        e.preventDefault();
+        // deltaY 만큼 가로로 스크롤
+        logos.scrollBy({ 
+        left: e.deltaY, 
+        behavior: 'smooth' 
+        });
+    });
+
+    //250725 홍지은 추가 - 파트너쉽 버튼 동작 기능
+    const prevBtn = document.querySelector('.partnership-btn[data-direction="prev"]');
+    const nextBtn = document.querySelector('.partnership-btn[data-direction="next"]');
+    if (!logos || !prevBtn || !nextBtn) return;
+
+    // partner-item 목록
+    const items = Array.from(logos.children);
+
+  function updateButtons() {
+    const maxScrollLeft = logos.scrollWidth - logos.clientWidth;
+
+    // 첫 카드일 때
+    if (logos.scrollLeft <= 0) {
+      prevBtn.style.display = 'none';
+    } else {
+      prevBtn.style.removeProperty('display');
+    }
+
+    // 마지막 카드일 때
+    if (logos.scrollLeft >= maxScrollLeft) {
+      nextBtn.style.display = 'none';
+    } else {
+      nextBtn.style.removeProperty('display');
+    }
+  }
+
+    // 휠 스크롤 → 부드럽게 이동
+    logos.addEventListener('wheel', e => {
+        e.preventDefault();
+        logos.scrollBy({ left: e.deltaY, behavior: 'smooth' });
+    });
+
+    // 버튼 클릭
+    prevBtn.addEventListener('click', () => {
+        logos.scrollBy({ left: -logos.clientWidth, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+        logos.scrollBy({ left: logos.clientWidth, behavior: 'smooth' });
+    });
+
+    // 스크롤 감지 시 버튼 상태 업데이트
+    logos.addEventListener('scroll', updateButtons);
+
+    // 초기 상태 반영
+    updateButtons();
+    });
 })();

@@ -714,6 +714,8 @@ p {
 
 #partnership {
    background: linear-gradient(135deg, #BFDBFE 0%, #60A5FA 25%, #3B82F6 50%, #2563EB 75%, #1E3A8A 100%);
+   align-items: start;
+   min-height: 0;
 }
 
 /* 파트너쉽 섹션의 최대 너비를 70%로 설정 | 250725 홍지은 추가 */
@@ -721,7 +723,7 @@ p {
   max-width: none;
   width: 100%;
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 30% 5% 1fr 5%;
 }
 
 
@@ -757,6 +759,64 @@ p {
     }
 
 }
+.partnership-btn-container{
+    justify-items: center;
+    align-content: center;
+}
+
+.partnership-btn{
+    /* 사이즈 좀 키우고, 테두리 없애기 */
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  
+  /* 중앙 정렬 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* 아이콘 크기 & 색상 */
+  font-size: 1.5rem;
+  color: var(--primary-color);
+
+  /* 부드러운 애니메이션 */
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+@media (max-width:1200px) {
+    .partnership-btn{
+        display: none;
+    }
+}
+/* 호버 시 살짝 떠오르는 느낌 */
+.partnership-btn:hover {
+  background: #ffffff;
+  transform: translateY(-3px);
+}
+
+/* 눌렀을 때 살짝 눌리는 이펙트 */
+.partnership-btn:active {
+  transform: scale(0.95);
+}
+
+/* 화살표를 텍스트 대신 SVG로 바꾸고 싶다면, */
+/* HTML: <button class="partnership-btn" data-direction="prev">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+         </button>
+   CSS도 아래처럼 추가: */
+.partnership-btn svg {
+  color: var(--primary-dark);
+  /* stroke 사용 안 함 */
+  stroke: none;
+}
+
+.partnership-btn svg polygon {
+  /* 폴리곤 내부를 currentColor(=--primary-color)로 채웁니다 */
+  fill: currentColor;
+}
 
 /* /250724 홍지은 추가/ */
 .partnership-intro {
@@ -786,7 +846,6 @@ p {
 /* /250724 홍지은 수정/ */
 .partners-grid {
   display: grid;
-  margin-top: 5rem;
   gap: 3rem;
 }
 
@@ -799,6 +858,20 @@ p {
 
 /* 1) 파트너 로고 컨테이너를 flex + 스크롤로 변경 */
 .partner-logos {
+  display: flex;                      /* 가로로 쭉 나열 */
+  overflow-x: auto;                   /* 가로 스크롤 허용 */
+  scroll-snap-type: x mandatory;      /* 스냅 포인트 활성화 */
+  gap: 1.5rem;
+  -webkit-overflow-scrolling: touch;  /* iOS 부드러운 스크롤 */
+}
+
+/* 스크롤바 숨기기 (선택) */
+  .partner-logos::-webkit-scrollbar {
+  display: none;
+}
+
+.partner-logos {
+  scrollbar-width: none;
 }
 
 /* /250724 홍지은 추가/ */
@@ -809,11 +882,11 @@ p {
   height: 60px;                  /* 가로 크기 고정 (원하는 값으로 조정) */
   /* height: auto;                  세로 비율 자동 유지 */
   object-fit: contain;           /* 이미지 비율 유지 */
-  width: 500px;             /* 부모 너비를 넘지 않게 */
-  height: 500px;             /* 세로 최대값 제한 */
+  width: 350px;             /* 부모 너비를 넘지 않게 */
+  height: 350px;             /* 세로 최대값 제한 */
   border-radius: 50px;
   background: var(--background-white);
-  padding: 10%;
+  padding: 3.5%;
 }
 
 @media(max-width:394px){
@@ -832,36 +905,53 @@ p {
     }
 }
 
-/* 2) 각 아이템은 스냅 대상, 고정 폭 설정
+/* 한 화면에 카드 1개만 보이도록 */
 .partner-item {
-  text-align: center;
-  /* 카드 사이즈 줄임. 2025-07-25 | 홍지은 */
-  padding: 1.3rem;
-  background: var(--background-white);
-  border-radius: 15px;
-  box-shadow: 0 2px 10px var(--shadow-color);
-  transition: var(--transition-smooth);
-} */
+  flex: 0 0 100%;            /* 부모 너비의 100% */
+  scroll-snap-align: start;  /* 스냅이 시작 지점에 걸리도록 */
+  width: fit-content;           /* ensure full width */
+  justify-items: center;
+} 
 
-/* /250724 홍지은 추가/ */
-.partner-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 20px var(--shadow-color);
-}
+
 
 /* /250724 홍지은 수정/ */
 .partner-logo {
   font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--text-primary);
+  font-size: 2.5rem;
+  color: white;
   margin-bottom: 0.5rem;
+  text-align: center;
+  width: fit-content;
 }
-
 /* /250724 홍지은 추가/ */
 .partner-item span {
-  font-size: 0.875rem;
-  color: var(--text-light);
+  font-size: 1rem;
+  color: white;
+  width: fit-content;
+  display: block;
+  text-align: center;
 }
+
+@media (max-width:1200px){
+    .partner-logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    width: fit-content;
+    }
+
+    .partner-item span {
+        font-size: 0.85rem;
+        color: white;
+        width: fit-content;
+        display: block;
+        text-align: center;
+    }
+}
+
 
 /* #portfolio .container 스타일 추가. 2025-07-25 | 이준경 */
 #portfolio .container{
