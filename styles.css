@@ -691,6 +691,11 @@ p {
   margin: 0 auto;
 }
 
+/* 파트너쉽 섹션의 최대 너비 설정 | 250725 홍지은 추가 */
+#partnership .container {
+  max-width: 1500px;
+}
+
 /* /250724 홍지은 추가/ */
 .partnership-intro {
   text-align: center;
@@ -724,6 +729,7 @@ p {
 }
 
 .partner-category h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
   text-align: center;
   margin-bottom: 2rem;
   color: var(--text-primary);
@@ -731,9 +737,9 @@ p {
 
 .partner-logos {
     display: grid;
-    /* 모바일 환경 정상 동작을 위해 grid 열 스타일 변경. 2025-07-24 | 홍지은
+    /* 모바일 환경 정상 동작을 위해 grid 열 스타일 변경. 2025-07-25 | 홍지은
     grid-template-columns: repeat(3, 1fr);*/ /* 3열 고정 */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
 }
 
@@ -741,7 +747,8 @@ p {
 .partner-logo-img {
   display: block;                /* 가운데 정렬 위해 block 사용 */
   margin: 0 auto 0.5rem auto;    /* 중앙 정렬 및 하단 여백 */
-  height: 80px;                  /* 가로 크기 고정 (원하는 값으로 조정) */
+  /* 로고 사이즈 줄임. 2025-07-25 | 홍지은 */
+  height: 60px;                  /* 가로 크기 고정 (원하는 값으로 조정) */
   /* height: auto;                  세로 비율 자동 유지 */
   object-fit: contain;           /* 이미지 비율 유지 */
   max-width: 100%;               /* 부모 너비를 넘지 않게 */
@@ -751,7 +758,8 @@ p {
 /* /250724 홍지은 추가/ */
 .partner-item {
   text-align: center;
-    padding: 2rem;
+  /* 카드 사이즈 줄임. 2025-07-25 | 홍지은 */
+  padding: 1.2rem;
   background: var(--background-white);
   border-radius: 10px;
   box-shadow: 0 2px 10px var(--shadow-color);
