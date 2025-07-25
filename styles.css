@@ -400,13 +400,21 @@ p {
 
 .timeline-block {
     position: relative;
+    /* 회사 연혁 width 48 -> 70으로 수정. 2025-07-25 | 이준경
     width: 48%;
+    */
+    width: 70%;
+    /* 회사 연혁 padding 주석처리. 2025-07-25 | 이준경
     padding: 1rem 1.5rem;
+    */
     box-sizing: border-box;
 }
 
 .timeline-block.left {
+    /* 회셔 연혁 width를 수정함에 따라 그만큼 left 스타일을 수정. 2025-07-25 | 이준경
     left: 0;
+    */
+    left: -22%;
     text-align: right;
 }
 
@@ -768,6 +776,10 @@ p {
 .partner-item span {
   font-size: 0.875rem;
   color: var(--text-light);
+}
+
+#portfolio .container{
+    width : 100%;
 }
 
 /* /250724 홍지은 추가/ Portfolio Section */
