@@ -584,6 +584,10 @@ p {
 
 /* 사업내용 Section */
 /* 250723 홍미숙 수정 - 사업내용 Section */
+#business {
+    align-items: flex-start;
+    padding-bottom : 0;
+}
 
 #business .container{
     max-width: none;
