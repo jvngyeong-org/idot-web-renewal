@@ -527,7 +527,8 @@ p {
 
     .timeline-wrapper::after,
     .timeline::before {
-        left: 20px;
+        /* left: 20px; timeline 노란줄 left 주석처리 및 display : none 스타일 추가. 2025-07-28 이준경 */
+        display : none;
     }
 
     .timeline-block.left,
@@ -538,6 +539,10 @@ p {
 
     .timeline-item::before {
         left: 20px;
+    }
+
+    .timeline-block .content {
+        margin-bottom: 5%;
     }
 }
 
