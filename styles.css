@@ -291,12 +291,17 @@ p {
 }
 
 /* 아이디오티 소개글 */
+/* 250728 홍미숙 추가 - 배경이미지추가 */
+#about{
+    background-image: url('../images/hms/밝은.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .about-section {
     padding: 4rem 2rem;
     margin: 0 auto 5rem;
-    font-family: 'Noto Sans KR', 'Segoe UI', Tahoma, sans-serif;
-    color: #1e2e47;
-    border-radius: 12px;
+    /* 250728 홍미숙 수정 - 불필요한 css제거 */
 }
 
 .about-flex {
@@ -309,6 +314,14 @@ p {
 .about-text {
     flex: 1 1 100%;
     min-width: 280px;
+}
+
+/* 250728 홍미숙 수정 - about-text p의 배치를 about-text아래로 수정*/
+.about-text p {
+    font-size: 1rem;
+    line-height: 1;
+    color: #364f6b;
+    white-space: pre-line;
 }
 
 /* typewriter 추가 */
@@ -349,15 +362,8 @@ p {
   50% { border-color: #162447; }
 }
 
-/* 250723 홍미숙 수정 */
-.about-text p {
-    font-size: 1rem;
-    line-height: 1;
-    color: #364f6b;
-    white-space: pre-line;
-}
-
-.about-image {
+/* 250728 홍미숙 수정 - 불필요한 css제거(주석처리)
+    .about-image {
     flex: 1 1 350px;
     border-radius: 12px;             
     overflow: hidden;               
@@ -371,7 +377,7 @@ p {
     height: auto;
     display: block;
     transition: filter 0.3s ease;
-}
+} */
 
 /* 회사연혁 timeline */
 .timeline-section {
