@@ -372,13 +372,10 @@ p {
     opacity: 0.95;                  
     transition: all 0.3s ease;       
 }
-
+*/
 .about-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: filter 0.3s ease;
-} */
+    max-width: 100%;
+}
 
 /* 회사연혁 timeline */
 .timeline-section {
